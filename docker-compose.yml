@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  neo4j:
+    image: neo4j:latest
+    volumes:
+      - C:/Users/felix/neo4jProj/data:/data
+      - C:/Users/felix/neo4jProj/config:/config
+      - C:/Users/felix/neo4jProj/logs:/logs
+    environment:
+      - NEO4J_AUTH=neo4j/test1234
+    ports:
+      - "7474:7474"
+      - "7687:7687"
