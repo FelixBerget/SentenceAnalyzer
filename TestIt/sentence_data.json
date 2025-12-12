@@ -1,0 +1,57 @@
+{
+  "words": [
+    {
+      "id": "word_1",
+      "text": "Mi",
+      "position": 1,
+      "type": "pronoun"
+    },
+    {
+      "id": "word_2",
+      "text": "piace",
+      "position": 2,
+      "type": "verb"
+    },
+    {
+      "id": "word_3",
+      "text": "molto",
+      "position": 3,
+      "type": "adverb"
+    },
+    {
+      "id": "word_4",
+      "text": "la",
+      "position": 4,
+      "type": "article"
+    },
+    {
+      "id": "word_5",
+      "text": "pizza",
+      "position": 5,
+      "type": "noun"
+    },
+    {
+      "id": "word_6",
+      "text": "italiana",
+      "position": 6,
+      "type": "adjective"
+    }
+  ],
+  "relations": [
+    {
+      "from": "word_5",
+      "to": "word_1",
+      "type": "AFFECTS"
+    },
+    {
+      "from": "word_3",
+      "to": "word_2",
+      "type": "MODIFIES"
+    },
+    {
+      "from": "word_6",
+      "to": "word_5",
+      "type": "MODIFIES"
+    }
+  ]
+}
