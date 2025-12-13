@@ -7,41 +7,41 @@ namespace TestIt
 
     public class Word
     {
-        public string _id;
-        public string _text;
-        public int _positon;
-        public string _type;
+        public string id { get; set; }
+        public string text { get; set; }
+        public int position { get; set; }
+        public string type { get; set; }
         
         public Word(string id, string text,int position,string type)
         {
-            _id = id;
-            _text = text;
-            _positon = position;
-            _type = type;
+            this.id = id;
+            this.text = text;
+            this.position = position;
+            this.type = type;
         }
     }
     public class Relations
     {
-        public string _from;
-        public string _to;
-        public string _type;
+        public string from { get; set; }
+        public string to { get; set; }
+        public string type { get; set; }
 
         public Relations(string from, string to, string type)
         {
-            _from = from;
-            _to = to;
-            _type = type;
+            this.from = from;
+            this.to = to;
+            this.type = type;
         }
     }
 
     public class Sentence
     {
-        public List<Relations> _relations;
-        public List<Word> _words;
+        public List<Relations> relations { get; set; }
+        public List<Word> words { get; set; }
         public Sentence()
         {
-            _relations = new List<Relations>();
-            _words = new List<Word>();
+            relations = new List<Relations>();
+            words = new List<Word>();
         }
     }
 

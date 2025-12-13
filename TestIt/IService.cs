@@ -6,7 +6,10 @@ namespace TestIt
 {
     public interface IService
     {
+        public Task SendToServer(string dataBase, string userName, string passWord, Sentence sentence);
 
-        public string Connect();
+        public Sentence RecieveFromServer(string dataBase, string userName, string passWord);
+
+        public Sentence SearchInServer(string dataBase, string userName, string passWord);
     }
 }

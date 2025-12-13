@@ -4,7 +4,8 @@ using System.Text;
 
 namespace TestIt
 {
-    public class Neo4JService : IService
+    public interface IConverter
     {
+        public Sentence Convert(string filename);
     }
 }
