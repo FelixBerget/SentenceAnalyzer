@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TestIt
 {
-    public class TestConverter : IConverter
+    public class TestSentenceAnalyzer : ISentenceAnalyzer
     {
 
         public Sentence Convert(string filename)

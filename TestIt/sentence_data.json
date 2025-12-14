@@ -1,37 +1,37 @@
 {
   "words": [
     {
-      "id": "word_1",
+      "id": "mi_pronoun",
       "text": "Mi",
       "position": 1,
       "type": "pronoun"
     },
     {
-      "id": "word_2",
+      "id": "piace_verb",
       "text": "piace",
       "position": 2,
       "type": "verb"
     },
     {
-      "id": "word_3",
+      "id": "molto_adverb",
       "text": "molto",
       "position": 3,
       "type": "adverb"
     },
     {
-      "id": "word_4",
+      "id": "la_article",
       "text": "la",
       "position": 4,
       "type": "article"
     },
     {
-      "id": "word_5",
+      "id": "lasagne_noun",
       "text": "lasagne",
       "position": 5,
       "type": "noun"
     },
     {
-      "id": "word_6",
+      "id": "italiana_adjective",
       "text": "italiana",
       "position": 6,
       "type": "adjective"
@@ -39,19 +39,19 @@
   ],
   "relations": [
     {
-      "type": "SUBJECT_OF",
-      "from": "word_5",
-      "to": "word_2"
+      "from": "lasagne_noun",
+      "to": "piace_verb",
+      "type": "SUBJECT_OF"
     },
     {
-      "type": "AFFECTS",
-      "from": "word_2",
-      "to": "word_1"
+      "from": "piace_verb",
+      "to": "mi_pronoun",
+      "type": "AFFECTS"
     },
     {
-      "type": "MODIFIES",
-      "from": "word_6",
-      "to": "word_5"
+      "from": "italiana_adjective",
+      "to": "lasagne_noun",
+      "type": "MODIFIES"
     }
   ]
 }

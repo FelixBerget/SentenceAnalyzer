@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TestIt
 {
-    public interface IService
+    public interface IGraphDBService
     {
         public Task SendToServer(string dataBase, string userName, string passWord, Sentence sentence);
 

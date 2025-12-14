@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TestIt
 {
-    public class TestService : IService
+    public class TestGraphDBService : IGraphDBService
     {
 
         public async Task SendToServer(string dataBase, string userName, string passWord, Sentence sentence)

@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace TestIt
 {
-    class Converter : IConverter
+    class SentenceAnalyzer : ISentenceAnalyzer
     {
 
         public Sentence Convert(string filename)

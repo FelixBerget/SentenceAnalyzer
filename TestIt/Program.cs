@@ -10,9 +10,9 @@ namespace TestIt
         static string password = "test1234";
         static async Task Main(string[] args)
         {
-            IConverter c = new Converter();
+            ISentenceAnalyzer c = new SentenceAnalyzer();
             Sentence s = c.Convert(fileName);
-            IService db = new DatabaseService();
+            IGraphDBService db = new Neo4jService();
             await db.SendToServer(dataBaseLink,userName,password,s);
         }
 

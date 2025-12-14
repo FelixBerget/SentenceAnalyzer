@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace TestIt
 {
-    public class DatabaseService : IService
+    public class Neo4jService : IGraphDBService
     {
         public async Task SendToServer(string dataBase, string userName, string passWord, Sentence sentence)
         {
             await using var driver = GraphDatabase.Driver(dataBase, AuthTokens.Basic(userName, passWord));
             foreach (Word w in sentence.words)
             {
-                var result = await driver.ExecutableQuery("MATCH)CREATE (:Word {id:$id,text: $text ,position: $position, type: $type})")
+                var result = await driver.ExecutableQuery("CREATE (:Word {id:$id,text: $text ,position: $position, type: $type})")
                     .WithParameters(new { id = w.id, text = w.text, position = w.position, type = w.type })
                     .WithConfig(new QueryConfig(database:"neo4j"))
                     .ExecuteAsync();
