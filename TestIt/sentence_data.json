@@ -26,7 +26,7 @@
     },
     {
       "id": "word_5",
-      "text": "pizza",
+      "text": "lasagne",
       "position": 5,
       "type": "noun"
     },
@@ -39,19 +39,19 @@
   ],
   "relations": [
     {
+      "type": "SUBJECT_OF",
       "from": "word_5",
-      "to": "word_1",
-      "type": "AFFECTS"
+      "to": "word_2"
     },
     {
-      "from": "word_3",
-      "to": "word_2",
-      "type": "MODIFIES"
+      "type": "AFFECTS",
+      "from": "word_2",
+      "to": "word_1"
     },
     {
+      "type": "MODIFIES",
       "from": "word_6",
-      "to": "word_5",
-      "type": "MODIFIES"
+      "to": "word_5"
     }
   ]
 }

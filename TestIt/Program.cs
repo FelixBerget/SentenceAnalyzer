@@ -10,8 +10,10 @@ namespace TestIt
         static string password = "test1234";
         static async Task Main(string[] args)
         {
-            Converter c = new Converter();
-            c.Convert(fileName);
+            IConverter c = new Converter();
+            Sentence s = c.Convert(fileName);
+            IService db = new DatabaseService();
+            await db.SendToServer(dataBaseLink,userName,password,s);
         }
 
         

@@ -9,7 +9,6 @@ namespace TestIt
 
         public async Task SendToServer(string dataBase, string userName, string passWord, Sentence sentence)
         {
-            await 
         }
 
         public Sentence RecieveFromServer(string dataBase, string userName, string passWord)
