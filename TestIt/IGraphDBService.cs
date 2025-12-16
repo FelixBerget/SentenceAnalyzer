@@ -6,10 +6,10 @@ namespace TestIt
 {
     public interface IGraphDBService
     {
-        public Task SendToServer(string dataBase, string userName, string passWord, Sentence sentence);
+        public Task SendToServer(Sentence sentence);
 
-        public Sentence RecieveFromServer(string dataBase, string userName, string passWord);
+        public Task<List<Word>> RecieveFromServer(string dataBase, string userName, string passWord);
 
-        public Sentence SearchInServer(string dataBase, string userName, string passWord);
+        public Task<List<Word>> SearchInServer(string dataBase, string userName, string passWord, string askedWord);
     }
 }

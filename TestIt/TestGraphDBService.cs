@@ -7,18 +7,20 @@ namespace TestIt
     public class TestGraphDBService : IGraphDBService
     {
 
-        public async Task SendToServer(string dataBase, string userName, string passWord, Sentence sentence)
+        public async Task SendToServer(Sentence sentence)
         {
         }
 
-        public Sentence RecieveFromServer(string dataBase, string userName, string passWord)
+        public async Task<List<Word>> RecieveFromServer(string dataBase, string userName, string passWord)
         {
-            return new Sentence();
+            List<Word> l = new List<Word>();
+            return l;
         }
 
-        public Sentence SearchInServer(string dataBase, string userName, string passWord)
+        public async Task<List<Word>> SearchInServer(string dataBase, string userName, string passWord,string askedWord)
         {
-            return new Sentence();
+            List<Word> l = new List<Word>();
+            return l;
         }
     }
 }

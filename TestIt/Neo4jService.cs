@@ -8,12 +8,17 @@ namespace TestIt
 {
     public class Neo4jService : IGraphDBService
     {
-        public async Task SendToServer(string dataBase, string userName, string passWord, Sentence sentence)
+        private readonly IDriver _driver;
+
+        public Neo4jService(IDriver driver) 
         {
-            await using var driver = GraphDatabase.Driver(dataBase, AuthTokens.Basic(userName, passWord));
+            _driver = driver;
+        }
+        public async Task SendToServer(Sentence sentence)
+        {
             foreach (Word w in sentence.words)
             {
-                var result = await driver.ExecutableQuery("CREATE (:Word {id:$id,text: $text ,position: $position, type: $type})")
+                var result = await _driver.ExecutableQuery("CREATE (:Word {id:$id,text: $text ,position: $position, type: $type})")
                     .WithParameters(new { id = w.id, text = w.text, position = w.position, type = w.type })
                     .WithConfig(new QueryConfig(database:"neo4j"))
                     .ExecuteAsync();
@@ -23,7 +28,7 @@ namespace TestIt
             
             foreach (Relations r in sentence.relations) {
                 string queryString = "MATCH(fromWord:Word{id:$from}) MATCH(toWord:Word{id:$to}) CREATE(fromWord)-[:" + r.type + "]->(toWord)" ;
-                    var result = await driver.ExecutableQuery(queryString)
+                    var result = await _driver.ExecutableQuery(queryString)
                     .WithParameters(new {from = r.from, to = r.to, type = r.type})
                     .WithConfig(new QueryConfig(database: "neo4j"))
                     .ExecuteAsync();
@@ -32,14 +37,44 @@ namespace TestIt
             }
         }
 
-        public Sentence RecieveFromServer(string dataBase, string userName, string passWord)
+        public async Task<List<Word>> RecieveFromServer(string dataBase, string userName, string passWord)
         {
-            return new Sentence();
+            var result = await _driver.ExecutableQuery("MATCH(n) RETURN n")
+                .ExecuteAsync();
+
+            List<Word> words = new List<Word>();
+            foreach (var part in result.Result)
+            {
+                INode n = part.Get<INode>("n");
+                string text = (string)n.Properties["text"];
+                string id = (string)n.Properties["id"];
+                long longpositon = (long)n.Properties["position"];
+                int position = (int)(longpositon);
+                string type = (string)n.Properties["type"];
+                Word w = new Word(id, text, position, type);
+                words.Add(w);
+            }
+            return words;
         }
 
-        public Sentence SearchInServer(string dataBase, string userName, string passWord)
+        public async Task<List<Word>> SearchInServer(string dataBase, string userName, string passWord, string askedWord)
         {
-            return new Sentence();
+            var result = await _driver.ExecutableQuery("MATCH(n {text:$askedWord}) RETURN n")
+                .WithParameters(new {askedWord = askedWord})
+                .ExecuteAsync();
+            List<Word> words = new List<Word>();
+            foreach (var part in result.Result)
+            {
+                INode n = part.Get<INode>("n");
+                string text = (string)n.Properties["text"];
+                string id = (string)n.Properties["id"];
+                long longpositon = (long)n.Properties["position"];
+                int position = (int)(longpositon);
+                string type = (string)n.Properties["type"];
+                Word w = new Word(id, text, position, type);
+                words.Add(w);
+            }
+            return words;
         }
     }
 }
