@@ -6,6 +6,8 @@ namespace TestIt
 {
     public interface ISentenceAnalyzer
     {
-        public Sentence Convert(string filename);
+        public Sentence ConvertWithFile(string filename);
+
+        public Sentence ConvertWithString(string jsonString);
     }
 }

@@ -7,9 +7,13 @@ namespace TestIt
     public class TestSentenceAnalyzer : ISentenceAnalyzer
     {
 
-        public Sentence Convert(string filename)
+        public Sentence ConvertWithFile(string filename)
         {
             return new Sentence();
+        }
+        public Sentence ConvertWithString(string jsonString)
+        {
+            return new Sentence(); 
         }
     }
 }
